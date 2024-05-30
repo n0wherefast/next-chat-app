@@ -4,19 +4,33 @@ import { getAuth,GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 import {auth ,gProvider} from '../firebase/firebase'
 import Cookies from "universal-cookie";
 
-const AppContext = createContext({})
+interface ContextType {
+    user:any;
+    isAuth:boolean;
+    setIsAuth:any;
+    SignInWithGoogle:any
+}
+
+const AppContext = createContext<ContextType>({
+    user: {},
+    isAuth: false,
+    setIsAuth: ()=>{},
+    SignInWithGoogle: ()=>{}
+})
+
+
 
 
 const Provider : React.FC<{children:ReactNode}> = ({children}) => {
     const cookies = new Cookies()
     const [user,setUser] = useState<object>()
-    const [isAuth,setIsAuth] = useState(cookies.get("auth-token"))
+    const [isAuth,setIsAuth] = useState(false)
 
 
     const SignInWithGoogle = async () => {
         try{
             const res = await signInWithPopup(auth,gProvider)
-            cookies.set("auth-token",res.user.refreshToken)
+            // cookies.set("auth-token",res.user.refreshToken)
             setUser({userName:res.user.displayName!, photo:res.user.photoURL!})
             setIsAuth(true)
             console.log(res) 
