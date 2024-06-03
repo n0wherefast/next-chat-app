@@ -4,6 +4,7 @@ import { useGlobalContext } from "../../context/context";
 import { useState,useRef } from "react";
 import Chat from "../Chat";
 import { Interface } from "readline";
+import ChatConversation from "../ChatConversation";
 
 
 
@@ -21,9 +22,9 @@ function WrappedMainPaige() {
              : 
             <>
               {room ? (
-                <div className="w-full h-screen flex flex-col justify-end bg-emerald-50">
-                   {/* <Chat room={room!}/> */}
-                   ROOM
+                <div className="w-full h-screen flex flex-col justify-end bg-emerald-300">
+                   <ChatConversation/>
+                   <Chat room={room!}/>
                 </div>
               ) :
               (

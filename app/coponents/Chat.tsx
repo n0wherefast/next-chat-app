@@ -2,11 +2,11 @@ import React from 'react'
 import WrappedChat from './wrapped/WrappedChat'
 
 
-function Chat() {
-
+function Chat(props:any) {
+ const {room} = props
   return (
     <>
-      <WrappedChat room={'testRomm'} />  
+      <WrappedChat room={room} />  
     </>
   )
 }
