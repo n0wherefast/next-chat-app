@@ -19,15 +19,15 @@ function WrappedMainPaige() {
    
   
     return (
-      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover ">
+      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover  ">
         <div className="backdrop-blur-sm  w-full flex justify-center">
-          <div className="w-full h-[90vh] mt-[5rem]  md:w-[70vw] flex  justify-center items-center ">
+          <div className="w-full h-screen md:w-[60vw] flex  justify-center items-center">
              {
           !isAuth ?  <div className="w-full "><Auth /></div>
              : 
             <>
               {room ? (
-                <div className="w-full h-screen flex flex-col justify-end bg-emerald-200">
+                <div className="w-full h-full flex flex-col justify-end bg-emerald-200  md:h-[80vh] md:rounded-2xl ">
                    <ChatConversation room={room!}/>
                    <Chat room={room!}/>
                 </div>
