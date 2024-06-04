@@ -20,10 +20,10 @@ function WrappedMainPaige() {
     // const inputRoomRef = useRef <HTMLInputElement | null> (null)
   
     return (
-      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-emerald-400">
+      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 ">
            
         {
-          !isAuth ?  <div><Auth /></div>
+          !isAuth ?  <div className="w-full "><Auth /></div>
              : 
             <>
               {room ? (
@@ -33,7 +33,7 @@ function WrappedMainPaige() {
                 </div>
               ) :
               (
-                <div className="mb-[15rem]">
+                <div className="mb-[10rem] ">
                   <ChatSelect />
                 </div>
                 

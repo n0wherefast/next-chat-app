@@ -10,9 +10,9 @@ function WrappedAuth() {
     const {SignInWithGoogle} = useGlobalContext()
   return (
     <>
-        <div className=' text-2xl font-bold w-72 h-56 bg-zinc-300 flex flex-col justify-start   items-center rounded-lg gap-14 p-5 '>
+        <div className=' text-white text-2xl font-bold max-w-full h-56 backdrop-brightness-75 backdrop-blur-[5px] flex flex-col justify-start   items-center rounded-lg gap-14 p-5 '>
             <p>Sign in with Google</p>
-            <button className=' flex gap-2 w-52 items-center justify-center rounded-md p-2 font-semibold bg-sky-500  text-slate-100' 
+            <button className='  flex gap-2 w-52 items-center justify-center rounded-md p-2 font-semibold bg-sky-500  text-slate-100' 
              onClick={()=>SignInWithGoogle()}>Sign In <FcGoogle size={30}/> </button>
         </div>
       

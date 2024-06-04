@@ -5,13 +5,13 @@ import { useGlobalContext } from '../../context/context'
 import Image from 'next/image'
 
 function WrappedNav() {
-    const {user,SignOut,room,setRoom} = useGlobalContext()
+    const {user,SignOut,isAuth,room,setRoom} = useGlobalContext()
     // console.log(user)
 
    
     return (
       <>
-       <nav className=' w-full min-h-[5rem] fixed  bg-emerald-400 p-3 font-medium text-lg md:text-2xl text-slate-100  flex md:flex-row flex-col justify-between items-center'>
+       {isAuth&&<nav className=' w-full min-h-[5rem] fixed  bg-emerald-400 p-3 font-medium text-lg md:text-2xl text-slate-100  flex md:flex-row flex-col justify-between items-center'>
           <p>Next Chat App</p>
           <div className='p-1 text-[1rem]' >
               { user ? <span className='flex justify-center items-center gap-2 h-[2rem] w-[25rem] '>
@@ -26,7 +26,7 @@ function WrappedNav() {
                   }
           </div>
           
-       </nav>      
+       </nav>  }    
       </>
     )
 }

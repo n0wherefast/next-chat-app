@@ -8,13 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // borderRadius:{
-      //   'comic' : '2em 2em 0 '
-      // },
+      
       backgroundImage: {
+        'bg1': "url('assets/bg1.webp')",
+        'bg2': "url('assets/bg2.webp')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          
+
       },
     },
   },
