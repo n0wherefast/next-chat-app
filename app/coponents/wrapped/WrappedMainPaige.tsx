@@ -5,34 +5,38 @@ import { useState,useRef } from "react";
 import Chat from "../Chat";
 import { Interface } from "readline";
 import ChatConversation from "../ChatConversation";
+import Link from "next/link";
+import ChatSelect from "../ChatSelect";
 
 
-
+export interface ROOM  {
+  room: string | null
+}
 
 
 function WrappedMainPaige() {
-    const {isAuth ,setIsAuth} = useGlobalContext()
-    const [room,setRoom] = useState <string | null>(null)
-    const inputRoomRef = useRef <HTMLInputElement | null> (null)
+    const {isAuth ,room, setRoom} = useGlobalContext()
+    // const [room,setRoom] = useState <string | null>(null)
+    // const inputRoomRef = useRef <HTMLInputElement | null> (null)
   
     return (
-      <main className=" w-full h-[100vh] flex items-center justify-center bg-zinc-100">
+      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-emerald-400">
+           
         {
           !isAuth ?  <div><Auth /></div>
              : 
             <>
               {room ? (
-                <div className="w-full h-screen flex flex-col justify-end bg-emerald-300">
-                   <ChatConversation/>
+                <div className="w-full h-screen flex flex-col justify-end bg-emerald-200">
+                   <ChatConversation room={room!}/>
                    <Chat room={room!}/>
                 </div>
               ) :
               (
-                <div className=" font-semibold flex flex-col w-64 gap-5 items-center bg-emerald-400 p-2 text-white rounded-xl">
-                  <label className=" text-xl"  htmlFor="">Enter Room Name</label>
-                  <input className=" text-black rounded-lg p-1" type="text"  ref={inputRoomRef} />
-                  <button className=" bg-sky-400 p-2 w-28 rounded-lg hover:bg-sky-600" onClick={()=>setRoom(inputRoomRef.current!.value)} >Enter</button>
+                <div className="mb-[15rem]">
+                  <ChatSelect />
                 </div>
+                
               )
               }
             </>

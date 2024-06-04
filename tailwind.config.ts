@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // borderRadius:{
+      //   'comic' : '2em 2em 0 '
+      // },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
