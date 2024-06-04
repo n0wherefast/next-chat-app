@@ -36,9 +36,9 @@ function WrappedChat(props:Props) {
             <button onClick={()=>setSwitchInput(true)} className={`${switchInput=== true? 'bg-sky-600 ' :'bg-sky-300'} p-1 px-2 rounded-lg text-white font-semibold`}>text</button>
             <button onClick={()=>setSwitchInput(false)} className={`${switchInput=== false? 'bg-sky-600 ' :'bg-sky-300'} p-1 px-2 rounded-lg text-white font-semibold`}>image</button>
            |
-            {room&&<div className="gap-2 flex items-center justify-around  font-bold  text-slate-900 w-full ">
-              <div className=' text-md text-white '>Chat  {room}</div>
-              <button className=' bg-amber-300 text-white  rounded-xl p-2' onClick={()=>setRoom('')}> Change Chat</button>
+            {room&&<div className="gap-2 flex items-center justify-around text-sm  font-bold  h-10 w-full ">
+              <div className='   text-white '>Chat  {room}</div>
+              <button className=' bg-amber-300 text-white  rounded-lg p-1' onClick={()=>setRoom('')}> Change Chat</button>
             </div>}
         </div>
         { switchInput === true ?<form action="" className='flex w-full  justify-around items-center' onSubmit={(e)=>HandelSubmit(e)}>

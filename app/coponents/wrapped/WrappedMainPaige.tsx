@@ -15,14 +15,14 @@ export interface ROOM  {
 
 
 function WrappedMainPaige() {
-    const {isAuth ,room, setRoom} = useGlobalContext()
-    // const [room,setRoom] = useState <string | null>(null)
-    // const inputRoomRef = useRef <HTMLInputElement | null> (null)
+    const {isAuth ,room} = useGlobalContext()
+   
   
     return (
-      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 ">
-           
-        {
+      <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover ">
+        <div className="backdrop-blur-sm  w-full flex justify-center">
+          <div className="w-full h-[90vh] mt-[5rem]  md:w-[70vw] flex  justify-center items-center ">
+             {
           !isAuth ?  <div className="w-full "><Auth /></div>
              : 
             <>
@@ -33,7 +33,7 @@ function WrappedMainPaige() {
                 </div>
               ) :
               (
-                <div className="mb-[10rem] ">
+                <div className="">
                   <ChatSelect />
                 </div>
                 
@@ -41,6 +41,10 @@ function WrappedMainPaige() {
               }
             </>
         }
+           </div>
+        </div>
+           
+       
         
       </main>
     );
