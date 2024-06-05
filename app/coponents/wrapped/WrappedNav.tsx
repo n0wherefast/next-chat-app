@@ -10,7 +10,6 @@ import { IoExitOutline } from "react-icons/io5";
 
 function WrappedNav() {
     const {user,SignOut,isAuth,room,setRoom} = useGlobalContext()
-    console.log(room)
 
    
     return (

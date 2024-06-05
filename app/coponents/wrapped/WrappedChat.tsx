@@ -28,6 +28,7 @@ function WrappedChat(props:Props) {
             text:newMessage,
             createdAt:serverTimestamp(),
             user:auth.currentUser?.displayName,
+            userEmail:auth.currentUser?.email,
             room 
         });
         setNewMessage("")

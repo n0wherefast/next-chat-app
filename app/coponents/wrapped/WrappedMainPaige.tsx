@@ -23,7 +23,7 @@ function WrappedMainPaige() {
         <div className="backdrop-blur-sm bgBlur-IOS  w-full flex justify-center">
           <div className="w-full h-screen md:w-[60vw] flex  justify-center items-center">
              {
-          !isAuth ?  <div className="w-[50vh] rounded-2xl bg-sky-500 "><Auth /></div>
+          !isAuth ?  <div className="w-[50vh] rounded-2xl bg-cyan-500 "><Auth /></div>
              : 
             <>
               {room ? (
