@@ -20,10 +20,10 @@ function WrappedMainPaige() {
   
     return (
       <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover  ">
-        <div className="backdrop-blur-sm  w-full flex justify-center">
+        <div className="backdrop-blur-sm bgBlur-IOS  w-full flex justify-center">
           <div className="w-full h-screen md:w-[60vw] flex  justify-center items-center">
              {
-          !isAuth ?  <div className="w-full "><Auth /></div>
+          !isAuth ?  <div className="w-[50vh] rounded-2xl bg-sky-500 "><Auth /></div>
              : 
             <>
               {room ? (

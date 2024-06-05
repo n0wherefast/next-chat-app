@@ -4,18 +4,20 @@ import { useGlobalContext } from '../context/context'
 function ChatSelect() {
     const {inputRoomRef,setRoom} = useGlobalContext()
 
+   
+
   return (
     <div className=" font-semibold flex flex-col w-64 gap-5 items-center bg-emerald-400 p-2 text-white rounded-xl">
-                  {/* <label className=" text-xl"  htmlFor="">Enter Chat Name</label>
-                  <input className=" text-black rounded-lg p-1" type="text"  ref={inputRoomRef} /> */}
-                  <label className=" text-xl"  htmlFor="">Select Chat Room</label>
-                  <select name='chat' className='text-black p-2 rounded-md' ref={inputRoomRef} >
-                    <option value="Room One">Room One</option>
-                    <option value="Room Two">Room Two</option>
-                    <option value="Room Three">Room Three</option>
-                    <option value="Room Four">Room Four</option>
-                  </select>
+                  <label className=" text-xl"  htmlFor="">Enter Chat Name</label>
+                  <input className=" text-black rounded-lg p-1" type="text"  ref={inputRoomRef} />
             <button className=" bg-sky-400 p-2 w-28 rounded-lg hover:bg-sky-600" onClick={()=>setRoom(inputRoomRef.current!.value)} >Enter</button>
+            <label className=" text-xl"  htmlFor="">Select Chat Room</label>
+            <div className='flex flex-row gap-2'>
+              <button className=" bg-sky-400 p-2 w-12 h-12 border border-white rounded-full hover:bg-sky-600" onClick={()=>setRoom('Room One')} >1</button>
+              <button className=" bg-sky-400 p-2 w-12 h-12 border border-white rounded-full hover:bg-sky-600" onClick={()=>setRoom('Room Two')} >2</button>
+              <button className=" bg-sky-400 p-2 w-12 h-12 border border-white rounded-full hover:bg-sky-600" onClick={()=>setRoom('Room Three')} >3</button>
+            </div>
+            
     </div>
   )
 }

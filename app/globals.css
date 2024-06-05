@@ -50,3 +50,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #34b4eb; 
 }
+
+.bgBlurIOS{
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
