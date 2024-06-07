@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { onSnapshot,query,where,collection, orderBy,} from 'firebase/firestore'
-import { auth, db } from '../firebase/firebase'
+import { auth, db } from '../../firebase/firebase'
 import { useGlobalContext } from '../context/context'
 // import ROOM from '../coponents/wrapped/WrappedMainPaige'
 

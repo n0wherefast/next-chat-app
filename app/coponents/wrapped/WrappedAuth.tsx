@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import {auth,gProvider} from '../../firebase/firebase'
+import {auth,gProvider} from '../../../firebase/firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { FcGoogle } from 'react-icons/fc'
 import { useGlobalContext } from '../../context/context'

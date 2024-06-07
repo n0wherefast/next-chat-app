@@ -1,7 +1,7 @@
 'use client'
 import { useContext,createContext, ReactNode, useState, useEffect, useRef } from "react"
 import { getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "firebase/auth";
-import {auth ,gProvider} from '../firebase/firebase'
+import {auth ,gProvider} from '../../firebase/firebase'
 import Cookies from "universal-cookie";
 
 interface ContextType {

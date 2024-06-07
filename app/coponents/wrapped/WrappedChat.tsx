@@ -1,7 +1,7 @@
 'use client'
 import React, { FormEvent, useState } from 'react'
 import { addDoc,collection, serverTimestamp} from 'firebase/firestore'
-import { auth, db } from '../../firebase/firebase'
+import { auth, db } from '../../../firebase/firebase'
 import { LuSend } from "react-icons/lu";
 import { useGlobalContext } from '@/app/context/context';
 import { AiOutlinePicture } from "react-icons/ai";
