@@ -6,6 +6,8 @@ import { LuSend } from "react-icons/lu";
 import { useGlobalContext } from '@/app/context/context';
 import { AiOutlinePicture } from "react-icons/ai";
 import { BsChatText } from "react-icons/bs";
+import {caesarCipher }from '../../utils/cCipher'
+
 
 
 
@@ -21,11 +23,14 @@ function WrappedChat(props:Props) {
 
     const messageRef = collection(db,"messages")
 
+   
+  
+
     const HandelSubmit = async (e:FormEvent)=> {
         e.preventDefault()
         if (newMessage==="") return;
         await addDoc(messageRef,{
-            text:newMessage,
+            text: caesarCipher(newMessage.toLocaleUpperCase()),
             createdAt:serverTimestamp(),
             user:auth.currentUser?.displayName,
             userEmail:auth.currentUser?.email,

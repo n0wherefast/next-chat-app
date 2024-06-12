@@ -3,6 +3,7 @@ import WrappedChat from './wrapped/WrappedChat'
 
 
 function Chat({room}:any) {
+
 //  const {room} = props
   return (
     <>
