@@ -10,10 +10,10 @@ import {getStorage} from "firebase/storage"
 const firebaseConfig = {
   apiKey:process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "nextchatapp-7d1d5.firebaseapp.com",
-  projectId: "nextchatapp-7d1d5",
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   storageBucket: "nextchatapp-7d1d5.appspot.com",
-  messagingSenderId: "691093082429",
-  appId: "1:691093082429:web:547ae12c975d4adaf67554"
+  messagingSenderId:process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 // Initialize Firebase
