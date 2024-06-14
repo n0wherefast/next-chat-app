@@ -53,5 +53,7 @@ body {
 
 .bgBlurIOS{
   -webkit-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  -ms-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
