@@ -7,7 +7,7 @@ function ChatSelect() {
    
 
   return (
-    <div className=" font-semibold flex flex-col w-64 gap-5 items-center bg-emerald-400 p-2 text-white rounded-xl">
+    <div className=" font-semibold flex flex-col w-64 gap-5 items-center bg-cyan-800 p-2 text-white rounded-xl">
                   <label className=" text-xl"  htmlFor="">Enter Chat Name</label>
                   <input className=" text-black rounded-lg p-1 w-[60%]" type="text"  ref={inputRoomRef} />
             <button className=" bg-sky-400 p-2 w-28 rounded-lg hover:bg-sky-600" onClick={()=>setRoom(inputRoomRef.current!.value)} >Enter</button>

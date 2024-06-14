@@ -4,11 +4,8 @@ import { addDoc,collection, serverTimestamp} from 'firebase/firestore'
 import { auth, db } from '../../../firebase/firebase'
 import { LuSend } from "react-icons/lu";
 import { useGlobalContext } from '@/app/context/context';
-import { AiOutlinePicture } from "react-icons/ai";
-import { BsChatText } from "react-icons/bs";
 import {caesarCipher }from '../../utils/cCipher'
-import { storage } from '../../../firebase/firebase';
-import { ref } from 'firebase/storage';
+
 
 
 

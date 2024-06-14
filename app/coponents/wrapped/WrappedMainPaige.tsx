@@ -1,11 +1,8 @@
 'use client'
 import Auth from "../Auth";
 import { useGlobalContext } from "../../context/context";
-import { useState,useRef } from "react";
 import Chat from "../Chat";
-import { Interface } from "readline";
 import ChatConversation from "../ChatConversation";
-import Link from "next/link";
 import ChatSelect from "../ChatSelect";
 
 
@@ -16,7 +13,6 @@ export interface ROOM  {
 function WrappedMainPaige() {
     const {isAuth ,room} = useGlobalContext()
    
-    console.log(process.env.FIREBASE_API_KEY)
 
     return (
       <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover  ">
@@ -27,13 +23,11 @@ function WrappedMainPaige() {
              : 
             <>
               {room ? (
-                // <div className="">
-                // <ChatSelect />
-                <div className=" w-full h-full flex flex-col justify-end bg-emerald-200  md:h-[80vh] md:rounded-2xl ">
+                
+                <div className=" w-full h-full flex flex-col justify-end bg-sky-950  md:h-[80vh] md:rounded-2xl ">
                    <ChatConversation room={room!}/>
                    <Chat room={room!}/>
                 </div>
-              //  </div>
               ) :
               (
                 <div className=" flex">
