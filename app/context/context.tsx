@@ -33,7 +33,6 @@ const AppContext = createContext<ContextType>({
 
 
 const Provider : React.FC<{children:ReactNode}> = ({children}) => {
-    const cookies = new Cookies()
     const [user,setUser] = useState<object>()
     const [currentUser,setcurrentUser] = useState<object>()
     const [isAuth,setIsAuth] = useState(false)
@@ -46,8 +45,6 @@ const Provider : React.FC<{children:ReactNode}> = ({children}) => {
     const SignInWithGoogle = async () => {
         try{
             const res = await signInWithPopup(auth,gProvider)
-            // cookies.set("auth-token",res.user.refreshToken)
-            // setUser({userName:res.user.displayName!, photo:res.user.photoURL!})
             setUser(res.user)
             setIsAuth(true)
             console.log(res) 
@@ -61,7 +58,6 @@ useEffect(()=>{
 
             if (currentUser){
                 setIsAuth(true)
-                // console.log(user)
             }else{
                 setIsAuth(false)
             }
@@ -74,7 +70,6 @@ useEffect(()=>{
         </AppContext.Provider>
     )
 }
-
 const useGlobalContext = () => {
     return useContext(AppContext)
 }

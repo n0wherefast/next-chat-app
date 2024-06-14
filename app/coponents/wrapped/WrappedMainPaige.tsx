@@ -13,11 +13,11 @@ export interface ROOM  {
   room: string | null
 }
 
-
 function WrappedMainPaige() {
     const {isAuth ,room} = useGlobalContext()
    
-  
+    console.log(process.env.FIREBASE_API_KEY)
+
     return (
       <main className=" w-full h-[100vh] flex flex-col items-center justify-center bg-bg1 bg-cover  ">
         <div className="backdrop-blur-sm bgBlur-IOS  w-full flex justify-center">
@@ -27,16 +27,18 @@ function WrappedMainPaige() {
              : 
             <>
               {room ? (
-                <div className="w-full h-full flex flex-col justify-end bg-emerald-200  md:h-[80vh] md:rounded-2xl ">
+                // <div className="">
+                // <ChatSelect />
+                <div className=" w-full h-full flex flex-col justify-end bg-emerald-200  md:h-[80vh] md:rounded-2xl ">
                    <ChatConversation room={room!}/>
                    <Chat room={room!}/>
                 </div>
+              //  </div>
               ) :
               (
-                <div className="">
+                <div className=" flex">
                   <ChatSelect />
                 </div>
-                
               )
               }
             </>

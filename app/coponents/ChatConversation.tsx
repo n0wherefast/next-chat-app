@@ -5,8 +5,6 @@ import { useGlobalContext } from '../context/context'
 import {caesarCipher }from '../utils/cCipher'
 import {capitalize} from '../utils/capitalize'
 
-// import ROOM from '../coponents/wrapped/WrappedMainPaige'
-
 interface MESSAGE {
     createdAt:any;
     id:string;
@@ -22,7 +20,7 @@ function ChatConversation({room}:ROOM) {
     const messageRef = collection(db,"messages")
     const [messages,setMessages] = useState([])
     const {user} = useGlobalContext()
-    const { displayName,email} = user
+    const {email} = user
     const scrollToBottom = useRef<HTMLDivElement>(null)
     useEffect(() =>{
         const queryMess = query(messageRef,where("room","==",room),orderBy('createdAt'));
