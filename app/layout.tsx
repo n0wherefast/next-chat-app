@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title:"Next Chat App",
-  description: 'Chat App',
+  title:"Next Chat | A place to talk",
+  description: 'A simple place to meet, catch up, and keep the conversation going.',
   icons:{
     icon:"/favicon-32x32.png",
     apple:"/apple-touch-icon.png",

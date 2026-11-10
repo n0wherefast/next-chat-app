@@ -1,46 +1,135 @@
 'use client'
-import React from 'react'
-import { FaUser } from 'react-icons/fa6'
-import { useGlobalContext } from '../../context/context'
 import Image from 'next/image'
-import { LuSend } from "react-icons/lu";
-import { IoExitOutline } from "react-icons/io5";
+import { FaUser } from 'react-icons/fa6'
+import { LuHash, LuMessagesSquare, LuPlus, LuSparkles } from 'react-icons/lu'
+import { useGlobalContext } from '../../context/context'
 
-
+const featuredRooms = ['Room One', 'Room Two', 'Room Three']
 
 function WrappedNav() {
-    const {user,SignOut,isAuth,room,setRoom} = useGlobalContext()
+  const { user, SignOut, isAuth, room, setRoom } = useGlobalContext()
 
-   
-    return (
-      < div className='flex  w-full   justify-center fixed z-50 '>
-       {isAuth&&<div>
-        { room === null? <nav className=' w-[100vw] min-h-[3rem] bg-cyan-950 p-3 font-medium text-lg md:text-2xl text-slate-100  flex md:flex-row flex-col justify-between items-center'>
-            {/* <p>Next Chat App</p> */}
-            <div className='p-1 text-[1rem]' >
-                { user ? <span className='flex justify-center items-center gap-2 h-[2rem] w-[25rem] '>
-                      <p className='text-[1.2rem] font-bold'>Welcome, </p>
-                    <Image className=' rounded-full w-9 h-9 ' width={50} height={50} src={user.photoURL} alt='photo profile'/> 
-                    <p className='  max-w-[300px] text-md'>{user.displayName}</p> |
-                    <button onClick={()=>SignOut()} className=' text-sm cursor-pointer hover:text-sky-500 transition-all duration-150 '> Log Out</button>
-                    </span>  :
-                    <div className=' w-14 h-14 bg-zinc-500 flex items-center justify-center  rounded-full'>
-                        <FaUser size={30}/>
-                    </div>                  
-                    }
-            </div>
-        </nav> :
-        <nav className=' w-[100vw] md:w-[60vw] min-h-[3rem] md:mt-3 md:rounded-full  bg-cyan-950 p-3 font-medium text-lg md:text-2xl text-slate-100  flex md:flex-row flex-col justify-between items-center'>
-          {room&&<div className="gap-2 flex items-center justify-between text-md h-10 w-full ">
-              <div className=' text-2xl font-light text-white flex items-center gap-3 '> <LuSend size={25}/>{room}</div>
-              <button className=' rounded-full flex items-center justify-center w-12 h-12 bg-emerald-400 cursor-pointer hover:bg-emerald-700 text-white p-2 transition-all duration-400' onClick={()=>setRoom(null)}><IoExitOutline size={28}/></button>
-            </div>}
-        </nav>
-        }
-       </div>
-       }    
+  if (!isAuth) return null
+
+  const account = (
+    <>
+      {user?.photoURL ? (
+        <Image
+          className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-white"
+          width={40}
+          height={40}
+          src={user.photoURL}
+          alt=""
+        />
+      ) : (
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+          <FaUser size={15} aria-hidden="true" />
+        </span>
+      )}
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-sm font-semibold text-slate-800">
+          {user?.displayName || 'Welcome'}
+        </span>
+        <span className="block truncate text-xs text-slate-500">Personal account</span>
+      </span>
+      <button
+        type="button"
+        onClick={() => SignOut()}
+        className="rounded-lg px-2 py-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+      >
+        Log out
+      </button>
+    </>
+  )
+
+  return (
+    <>
+      <header className="fixed inset-x-0 top-0 z-40 flex h-[4.5rem] items-center border-b border-slate-200 bg-white/95 px-4 backdrop-blur lg:hidden">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white">
+            <LuMessagesSquare size={19} aria-hidden="true" />
+          </span>
+          <span className="truncate text-sm font-bold tracking-tight text-slate-900">Next Chat</span>
+          {room && (
+            <>
+              <span className="text-slate-300">/</span>
+              <span className="truncate text-sm font-medium text-slate-600">{room}</span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-[17rem] flex-col border-r border-slate-200 bg-white lg:flex">
+        <div className="flex h-[5.25rem] items-center gap-3 border-b border-slate-100 px-6">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm shadow-indigo-200">
+            <LuMessagesSquare size={21} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-[15px] font-bold tracking-tight text-slate-900">Next Chat</p>
+            <p className="text-[11px] text-slate-500">A place to talk</p>
+          </div>
+        </div>
+
+        <div className="px-4 pt-6">
+          {/* <button
+            type="button"
+            onClick={() => setRoom(null)}
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 text-sm font-semibold text-white shadow-sm shadow-indigo-200 transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+          >
+            <LuPlus size={18} aria-hidden="true" />
+            New conversation
+          </button> */}
+        </div>
+
+        <div className="mt-8 px-4">
+          <div className="mb-2 flex items-center justify-between px-2">
+            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Your rooms</p>
+            <span className="text-xs text-slate-400">{featuredRooms.length + (room && !featuredRooms.includes(room) ? 1 : 0)}</span>
+          </div>
+          <div className="space-y-1">
+            {[...featuredRooms, ...(room && !featuredRooms.includes(room) ? [room] : [])].map((roomName) => {
+              const isSelected = room === roomName
+              return (
+                <button
+                  type="button"
+                  key={roomName}
+                  onClick={() => setRoom(roomName)}
+                  aria-current={isSelected ? 'page' : undefined}
+                  className={`flex h-10 w-full items-center gap-3 rounded-lg px-3 text-left text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    isSelected
+                      ? 'bg-indigo-50 font-semibold text-indigo-700'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                  }`}
+                >
+                  <LuHash size={17} className={isSelected ? 'text-indigo-500' : 'text-slate-400'} aria-hidden="true" />
+                  <span className="min-w-0 flex-1 truncate">{roomName}</span>
+                  {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-label="Current room" />}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="mt-auto border-t border-slate-100 p-4">
+          <div className="flex items-center gap-3 rounded-xl bg-slate-50 p-3">
+            {account}
+          </div>
+          <div className="mt-4 flex items-center gap-2 px-2 text-xs text-slate-400">
+            <LuSparkles size={14} aria-hidden="true" />
+            Good conversations start here
+          </div>
+        </div>
+      </aside>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
+        <div className="mx-auto flex max-w-lg items-center gap-3">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            {account}
+          </div>
+        </div>
       </div>
-    )
+    </>
+  )
 }
 
 export default WrappedNav
