@@ -1,13 +1,15 @@
 'use client'
 import Image from 'next/image'
+import { useState } from 'react'
 import { FaUser } from 'react-icons/fa6'
-import { LuHash, LuMessagesSquare, LuPlus, LuSparkles } from 'react-icons/lu'
+import { LuHash, LuMenu, LuMessagesSquare, LuSparkles, LuX } from 'react-icons/lu'
 import { useGlobalContext } from '../../context/context'
 
 const featuredRooms = ['Room One', 'Room Two', 'Room Three']
 
 function WrappedNav() {
   const { user, SignOut, isAuth, room, setRoom } = useGlobalContext()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   if (!isAuth) return null
 
@@ -44,7 +46,7 @@ function WrappedNav() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 flex h-[4.5rem] items-center border-b border-slate-200 bg-white/95 px-4 backdrop-blur lg:hidden">
+      <header className="fixed inset-x-0 top-0 z-40 flex h-[4.5rem] items-center justify-between border-b border-slate-200 bg-white/95 px-4 backdrop-blur lg:hidden">
         <div className="flex min-w-0 items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white">
             <LuMessagesSquare size={19} aria-hidden="true" />
@@ -57,7 +59,53 @@ function WrappedNav() {
             </>
           )}
         </div>
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-account-menu"
+          className="ml-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        >
+          {isMobileMenuOpen ? <LuX size={21} aria-hidden="true" /> : <LuMenu size={21} aria-hidden="true" />}
+        </button>
       </header>
+
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-account-menu"
+          className="fixed inset-x-0 top-[4.5rem] z-50 border-b border-slate-200 bg-white p-4 shadow-lg lg:hidden"
+        >
+          <div className="flex items-center gap-3 rounded-xl bg-slate-50 p-3">
+            {user?.photoURL ? (
+              <Image
+                className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-white"
+                width={40}
+                height={40}
+                src={user.photoURL}
+                alt=""
+              />
+            ) : (
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                <FaUser size={15} aria-hidden="true" />
+              </span>
+            )}
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-sm font-semibold text-slate-800">
+                {user?.displayName || 'Welcome'}
+              </span>
+              <span className="block truncate text-xs text-slate-500">Personal account</span>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => SignOut()}
+            className="mt-3 flex h-11 w-full items-center justify-center rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          >
+            Log out
+          </button>
+        </div>
+      )}
 
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-[17rem] flex-col border-r border-slate-200 bg-white lg:flex">
         <div className="flex h-[5.25rem] items-center gap-3 border-b border-slate-100 px-6">
@@ -68,17 +116,6 @@ function WrappedNav() {
             <p className="text-[15px] font-bold tracking-tight text-slate-900">Next Chat</p>
             <p className="text-[11px] text-slate-500">A place to talk</p>
           </div>
-        </div>
-
-        <div className="px-4 pt-6">
-          {/* <button
-            type="button"
-            onClick={() => setRoom(null)}
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 text-sm font-semibold text-white shadow-sm shadow-indigo-200 transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-          >
-            <LuPlus size={18} aria-hidden="true" />
-            New conversation
-          </button> */}
         </div>
 
         <div className="mt-8 px-4">
@@ -121,13 +158,6 @@ function WrappedNav() {
         </div>
       </aside>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
-        <div className="mx-auto flex max-w-lg items-center gap-3">
-          <div className="flex min-w-0 flex-1 items-center gap-3">
-            {account}
-          </div>
-        </div>
-      </div>
     </>
   )
 }
